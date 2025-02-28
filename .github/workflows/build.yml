@@ -7,7 +7,7 @@ on:
     branches: [ "dev" ]
 
 jobs:
-  build:
+  build-pc:
     runs-on: ${{ matrix.os }}
     strategy:
       fail-fast: false
@@ -36,10 +36,6 @@ jobs:
     steps:
     - uses: actions/checkout@v4
 
-    - name: Setup MSBuild (Windows)
-      if: matrix.os == 'windows-2019'
-      uses: microsoft/setup-msbuild@v1
-
     - name: Build (Linux & Mac)
       if: matrix.os == 'macos-latest' || matrix.os == 'ubuntu-latest'
       run: |
@@ -48,4 +44,8 @@ jobs:
 
     - name: Build (Windows)
       if: matrix.os == 'windows-2019'
+      uses: microsoft/setup-msbuild@v1
       run: msbuild HyperZ.sln /p:Configuration=Release
+  build-android:
+    steps:
+    - uses: actions/checkout@v4
