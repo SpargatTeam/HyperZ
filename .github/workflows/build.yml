@@ -45,5 +45,5 @@ jobs:
     - name: Build (Windows)
       if: matrix.os == 'windows-2019'
       run: |
-          choco install visualstudio2019buildtools --package-parameters "--allWorkloads --add Microsoft.VisualStudio.Workload.MSBuildTools --includeRecommended --includeOptional --passive --locale en-US"
+          choco install visualstudio2019buildtools --package-parameters "--add Microsoft.VisualStudio.Workload.MSBuildTools --includeRecommended --locale en-US"
           msbuild HyperZ.sln /p:Configuration=Release
