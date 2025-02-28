@@ -5,27 +5,38 @@ on:
   - pull_request
 
 jobs:
-    build-ubuntu:
-      runs-on: ubuntu-latest
-      steps:
+  build-ubuntu:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
       - name: Build (Linux)
         run: |
             cmake . -DCMAKE_CXX_COMPILER=g++ -DCMAKE_C_COMPILER=gcc
             cmake --build .
-    build-windows:
-      runs-on: windows-2019
-      steps:
+
+  build-windows:
+    runs-on: windows-2019
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
       - name: MSBuild (Windows)
         uses: microsoft/setup-msbuild@v1
       - name: Build (Windows)
         run: msbuild HyperZ.sln /p:Configuration=Release
-    build-macos:
-      runs-on: macos-latest
-      steps:
+
+  build-macos:
+    runs-on: macos-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
       - name: Build (macOS)
         run: |
             cmake . -DCMAKE_CXX_COMPILER=clang++ -DCMAKE_C_COMPILER=clang
             cmake --build .
-    build-android:
-      steps:
-      - uses: actions/checkout@v4
+
+  build-android:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
