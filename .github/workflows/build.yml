@@ -37,13 +37,13 @@ jobs:
     - uses: actions/checkout@v4
 
     - name: Build (Linux & Mac)
-      if: matrix.os == 'macos-latest' && matrix.os == 'ubuntu-latest'
+      if: matrix.os == 'macos-latest' || matrix.os == 'ubuntu-latest'
       run: |
-          cmake .
+          cmake . -DCMAKE_CXX_COMPILER=${{ matrix.cpp_compiler }} -DCMAKE_C_COMPILER=${{ matrix.c_compiler }}
           cmake --build .
 
     - name: Build (Windows)
       if: matrix.os == 'windows-2019'
       run: |
-          choco install visualstudio2019buildtools --package-parameters "--allWorkloads --includeRecommended --includeOptional --passive --locale en-US"
+          choco install visualstudio2019buildtools --package-parameters "--allWorkloads --add Microsoft.VisualStudio.Workload.MSBuildTools --includeRecommended --includeOptional --passive --locale en-US"
           msbuild HyperZ.sln /p:Configuration=Release
