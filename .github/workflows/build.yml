@@ -7,45 +7,35 @@ on:
     branches: [ "dev" ]
 
 jobs:
-  build-pc:
-    runs-on: ${{ matrix.os }}
-    strategy:
-      fail-fast: false
-      matrix:
-        os: [ubuntu-latest, windows-2019, macos-latest]
-        build_type: [Release]
-        c_compiler: [clang, cl]
-        include:
-          - os: windows-2019
-            c_compiler: cl
-            cpp_compiler: cl
-          - os: ubuntu-latest
-            c_compiler: clang
-            cpp_compiler: clang++
-          - os: macos-latest
-            c_compiler: clang
-            cpp_compiler: clang++
-        exclude:
-          - os: macos-latest
-            c_compiler: cl
-          - os: windows-2019
-            c_compiler: clang
-          - os: ubuntu-latest
-            c_compiler: cl
-
+    build-ubuntu:
+    runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v4
 
-    - name: Build (Linux & Mac)
-      if: matrix.os == 'macos-latest' || matrix.os == 'ubuntu-latest'
+    - name: Build (Linux)
       run: |
-          cmake . -DCMAKE_CXX_COMPILER=${{ matrix.cpp_compiler }} -DCMAKE_C_COMPILER=${{ matrix.c_compiler }}
+          cmake . -DCMAKE_CXX_COMPILER=g++ -DCMAKE_C_COMPILER=gcc
           cmake --build .
 
+    build-windows:
+    runs-on: windows-2019
+    steps:
+    - uses: actions/checkout@v4
+
     - name: Build (Windows)
-      if: matrix.os == 'windows-2019'
       uses: microsoft/setup-msbuild@v1
       run: msbuild HyperZ.sln /p:Configuration=Release
-  build-android:
+
+    build-macos:
+    runs-on: macos-latest
+    steps:
+    - uses: actions/checkout@v4
+
+    - name: Build (macOS)
+      run: |
+          cmake . -DCMAKE_CXX_COMPILER=clang++ -DCMAKE_C_COMPILER=clang
+          cmake --build .
+
+    build-android:
     steps:
     - uses: actions/checkout@v4
