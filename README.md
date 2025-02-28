@@ -7,3 +7,5 @@
 ## Why we use it?
 
 ### becouse we can self develop new updates any time.
+
+## For compille for windows you need vs2019, for linux you nedd cmake 3
