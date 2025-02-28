@@ -139,7 +139,12 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="texture.c" />
+    <ClCompile Include="..\src\texture.c" />
+    <ClCompile Include="..\src\vec2.c" />
+    <ClCompile Include="..\src\vec3.c" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\include\config.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
