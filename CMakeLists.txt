@@ -4,9 +4,5 @@ file(GLOB_RECURSE SOURCE
     ${CMAKE_CURRENT_SOURCE_DIR}/src/*.cpp
     ${CMAKE_CURRENT_SOURCE_DIR}/src/*.c
 )
-if (ANDROID)
-    add_library(${PROJECT_NAME} SHARED ${SOURCE})
-else()
-    add_executable(${PROJECT_NAME} ${SOURCE})
-endif()
-include_directories(${CMAKE_SOURCE_DIR}/source)
+add_library(${PROJECT_NAME} STATIC ${SOURCE})
+include_directories(${CMAKE_SOURCE_DIR}/include)
