@@ -1,43 +1,31 @@
 name: HyperZ Build
 
 on:
-  push:
-    branches: [ "dev" ]
-  pull_request:
-    branches: [ "dev" ]
+  - push
+  - pull_request
 
 jobs:
     build-ubuntu:
-    runs-on: ubuntu-latest
-    steps:
-    - uses: actions/checkout@v4
-
-    - name: Build (Linux)
-      run: |
-          cmake . -DCMAKE_CXX_COMPILER=g++ -DCMAKE_C_COMPILER=gcc
-          cmake --build .
-
+      runs-on: ubuntu-latest
+      steps:
+      - name: Build (Linux)
+        run: |
+            cmake . -DCMAKE_CXX_COMPILER=g++ -DCMAKE_C_COMPILER=gcc
+            cmake --build .
     build-windows:
-    runs-on: windows-2019
-    steps:
-    - uses: actions/checkout@v4
-
-    - name: MSBuild (Windows)
-      uses: microsoft/setup-msbuild@v1
-
-    - name: Build (Windows)
-      run: msbuild HyperZ.sln /p:Configuration=Release
-
+      runs-on: windows-2019
+      steps:
+      - name: MSBuild (Windows)
+        uses: microsoft/setup-msbuild@v1
+      - name: Build (Windows)
+        run: msbuild HyperZ.sln /p:Configuration=Release
     build-macos:
-    runs-on: macos-latest
-    steps:
-    - uses: actions/checkout@v4
-
-    - name: Build (macOS)
-      run: |
-          cmake . -DCMAKE_CXX_COMPILER=clang++ -DCMAKE_C_COMPILER=clang
-          cmake --build .
-
+      runs-on: macos-latest
+      steps:
+      - name: Build (macOS)
+        run: |
+            cmake . -DCMAKE_CXX_COMPILER=clang++ -DCMAKE_C_COMPILER=clang
+            cmake --build .
     build-android:
-    steps:
-    - uses: actions/checkout@v4
+      steps:
+      - uses: actions/checkout@v4
