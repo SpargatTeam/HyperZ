@@ -22,8 +22,10 @@ jobs:
     steps:
     - uses: actions/checkout@v4
 
-    - name: Build (Windows)
+    - name: MSBuild (Windows)
       uses: microsoft/setup-msbuild@v1
+
+    - name: Build (Windows)
       run: msbuild HyperZ.sln /p:Configuration=Release
 
     build-macos:
