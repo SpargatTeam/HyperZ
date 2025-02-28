@@ -15,18 +15,18 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="..\src\texture.c">
+    <ClCompile Include="..\src\texture.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="..\src\vec3.c">
+    <ClCompile Include="..\src\vec3.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="..\src\vec2.c">
+    <ClCompile Include="..\src\vec2.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\include\config.h">
+    <ClInclude Include="..\include\config.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
