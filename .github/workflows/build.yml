@@ -23,7 +23,7 @@ jobs:
       - name: MSBuild
         uses: microsoft/setup-msbuild@v1
       - name: Build
-        run: msbuild HyperZ.sln /p:Configuration=Release
+        run: msbuild HyperX.sln /p:Configuration=Release
 
   build-macos:
     runs-on: macos-latest
