@@ -56,13 +56,10 @@ jobs:
           mkdir -p $HOME/.android
           echo 'sdk.dir=$ANDROID_SDK_ROOT' > $HOME/.android/repositories.cfg
           echo 'ndk.dir=$ANDROID_NDK_ROOT' >> $HOME/.android/repositories.cfg
-          sed -i 's/android-30/android-35/' $(grep -rl 'android-30' .)
-          sed -i 's/minSdkVersion [0-9]\+/minSdkVersion 24/' $(grep -rl 'minSdkVersion' .)
-          sed -i 's/targetSdkVersion [0-9]\+/targetSdkVersion 30/' $(grep -rl 'targetSdkVersion' .)
           export ANDROID_HOME=$HOME/android-sdk
           export ANDROID_NDK_HOME=$ANDROID_HOME/ndk/r27c
           export PATH=$PATH:$ANDROID_HOME/cmdline-tools/latest/bin:$ANDROID_HOME/platform-tools:$ANDROID_NDK_HOME
       - name: Build
         run: |
-            cmake -DCMAKE_TOOLCHAIN_FILE=$ANDROID_NDK_HOME -DANDROID_ABI=armeabi-v7a -DANDROID_NATIVE_API_LEVEL=24 -G Ninja .
+            cmake -DCMAKE_TOOLCHAIN_FILE=$ANDROID_NDK_HOME -DANDROID_ABI=armeabi-v7a -DANDROID_NATIVE_API_LEVEL=24 -G "Ninja" .
             cmake --build .
