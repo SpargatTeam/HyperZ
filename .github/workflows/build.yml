@@ -45,19 +45,8 @@ jobs:
         with:
           distribution: 'temurin'
           java-version: '17'
-      - name: Install cmdline-tools
-        run: |
-          # Instalare cmdline-tools dacă nu este deja prezent
-          mkdir -p $HOME/.android/cmdline-tools
-          curl -L https://dl.google.com/android/repository/commandlinetools-linux-6858069_latest.zip -o cmdline-tools.zip
-          unzip cmdline-tools.zip -d $HOME/.android/cmdline-tools
-          rm cmdline-tools.zip
-          echo "export PATH=\$PATH:$HOME/.android/cmdline-tools/latest/bin" >> $GITHUB_EN
-      - name: Accept Android SDK licenses
-        run: |
-            yes | sdkmanager --licenses
       - name: Setup Android SDK
-        uses: amyu/setup-android@main
+        uses: SpargatTeam/setup-android-fork@main
         with:
           cache-disabled: false
           sdk-version: |
