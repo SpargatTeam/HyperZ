@@ -45,18 +45,10 @@ jobs:
         with:
           distribution: 'temurin'
           java-version: '17'
-      - name: Setup Android SDK
-        uses: SpargatTeam/setup-android-fork@main
+      - uses: nttld/setup-ndk@v1
+        id: setup-ndk 
         with:
-          cache-disabled: false
-          sdk-version: |
-            24
-            30
-            35
-          build-tools-version: 35.0.0
-          cmake-version: 3.22.1.20211201
-          ndk-version: 27.2.12479018
-          generate-job-summary: true
+          ndk-version: r27c
       - name: Extra needed SDK
         run: |
           sudo apt install clang build-essential -y
