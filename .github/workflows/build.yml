@@ -64,5 +64,5 @@ jobs:
           export PATH=$PATH:$ANDROID_HOME/cmdline-tools/latest/bin:$ANDROID_HOME/platform-tools:$ANDROID_NDK_HOME
       - name: Build
         run: |
-            cmake -S . -B build -DCMAKE_TOOLCHAIN_FILE=$ANDROID_NDK_HOME -DANDROID_ABI=armeabi-v7a -DANDROID_NATIVE_API_LEVEL=24 -DCMAKE_BUILD_TYPE=Release -G Ninja
+            cmake -DCMAKE_TOOLCHAIN_FILE=$ANDROID_NDK_HOME -DANDROID_ABI=armeabi-v7a -DANDROID_NATIVE_API_LEVEL=24 -G Ninja .
             cmake --build .
