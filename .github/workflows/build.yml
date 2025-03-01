@@ -50,19 +50,7 @@ jobs:
         with:
           ndk-version: r27c
       - name: Extra needed SDK
-        run: |
-          sudo apt install clang build-essential -y
-          sudo apt install libc6-dev -y
-          sudo apt install g++ -y
-          sudo apt install make -y
-          sudo apt install libssl-dev -y
-          sudo apt install git -y
-          sudo apt install cmake -y
-          sudo apt install pkg-config -y
-          sudo apt install libboost-all-dev -y
-          sudo apt install libstdc++6 -y
-          sudo apt install libc++-dev -y
-          sudo apt install libc++abi-dev -y
+        run: sudo apt install ninja-build -y
       - name: Configure Android SDK and NDK Versions
         run: |
           mkdir -p $HOME/.android
@@ -76,5 +64,5 @@ jobs:
           export PATH=$PATH:$ANDROID_HOME/cmdline-tools/latest/bin:$ANDROID_HOME/platform-tools:$ANDROID_NDK_HOME
       - name: Build
         run: |
-            cmake -S . -B build -DCMAKE_TOOLCHAIN_FILE=$ANDROID_NDK_HOME -DANDROID_ABI=armeabi-v7a -DANDROID_NATIVE_API_LEVEL=24 -DCMAKE_BUILD_TYPE=Release
+            cmake -S . -B build -DCMAKE_TOOLCHAIN_FILE=$ANDROID_NDK_HOME -DANDROID_ABI=armeabi-v7a -DANDROID_NATIVE_API_LEVEL=24 -DCMAKE_BUILD_TYPE=Release -G Ninja
             cmake --build .
