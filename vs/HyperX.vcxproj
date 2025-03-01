@@ -40,11 +40,12 @@
     <Platform Condition=" '$(Platform)' == '' ">Win32</Platform>
     <Keyword>Win32Proj</Keyword>
     <ProjectGuid>{8008ba99-4e28-40db-981b-82c575995f6b}</ProjectGuid>
-    <RootNamespace>HyperZ</RootNamespace>
+    <RootNamespace>HyperX</RootNamespace>
     <TargetPlatformVersion Condition=" '$(TargetPlatformVersion)' == '' ">10.0.22000.0</TargetPlatformVersion>
     <TargetPlatformMinVersion>10.0.10240.0</TargetPlatformMinVersion>
     <MinimumVisualStudioVersion>14</MinimumVisualStudioVersion>
     <WindowsTargetPlatformVersion>10.0.16299.0</WindowsTargetPlatformVersion>
+    <ProjectName>HyperX</ProjectName>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">

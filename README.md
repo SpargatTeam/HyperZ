@@ -1,4 +1,4 @@
-# HyperZ the Spargat's own 3d engine
+# HyperX the Spargat's own 3d engine
 
 ## How it works?
 

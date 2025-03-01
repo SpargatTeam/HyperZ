@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 3.15)
-project(HyperZ LANGUAGES C CXX)
+project(HyperX LANGUAGES C CXX)
 set(CMAKE_CXX_STANDARD 20)
 file(GLOB_RECURSE SOURCE
     ${CMAKE_CURRENT_SOURCE_DIR}/src/*.cpp
