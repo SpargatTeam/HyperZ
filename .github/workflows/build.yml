@@ -48,7 +48,7 @@ jobs:
       - name: Setup Android SDK
         uses: amyu/setup-android@main
         with:
-          cache-disabled: false
+          cache-disabled: true
           sdk-version: |
             24
             30
@@ -56,7 +56,7 @@ jobs:
           build-tools-version: 35.0.0
           cmake-version: 3.22.1.20211201
           ndk-version: 27.2.12479018
-          generate-job-summary: true
+          generate-job-summary: false
       - name: Extra needed SDK
         run: |
           sudo apt install clang build-essential -y
